@@ -1,0 +1,9 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.sunnymaple.web.login.config.LoginAutoConfiguration,\
+  cn.sunnymaple.web.login.pattern.shiro.ShiroAuthLoginAutoConfiguration,\
+  cn.sunnymaple.web.response.AppResponseHandlerAutoConfiguration,\
+  cn.sunnymaple.web.db.mybatis.PageHandlerAutoConfiguration,\
+  cn.sunnymaple.web.swagger.Swagger2AutoConfiguration,\
+  cn.sunnymaple.web.error.me.conf.ErrorsAutoConfiguration,\
+  cn.sunnymaple.web.error.me.conf.ServletErrorsAutoConfiguration,\
+  cn.sunnymaple.web.error.me.conf.ReactiveErrorsAutoConfiguration

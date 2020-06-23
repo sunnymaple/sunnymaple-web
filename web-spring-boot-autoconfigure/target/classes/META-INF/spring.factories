@@ -1,0 +1,9 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.seagetech.web.login.config.LoginAutoConfiguration,\
+  com.seagetech.web.login.pattern.shiro.ShiroAuthLoginAutoConfiguration,\
+  com.seagetech.web.response.AppResponseHandlerAutoConfiguration,\
+  com.seagetech.web.db.mybatis.PageHandlerAutoConfiguration,\
+  com.seagetech.web.swagger.Swagger2AutoConfiguration,\
+  com.seagetech.web.error.me.conf.ErrorsAutoConfiguration,\
+  com.seagetech.web.error.me.conf.ServletErrorsAutoConfiguration,\
+  com.seagetech.web.error.me.conf.ReactiveErrorsAutoConfiguration
