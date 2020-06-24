@@ -8,7 +8,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import static cn.sunnymaple.web.error.ErrorCode.A0301;
+import static cn.sunnymaple.web.error.ErrorCode.A0312;
 
 /**
  * 权限验证异常
@@ -41,6 +41,6 @@ public class UnauthorizedExceptionHandler implements WebErrorHandler {
      */
     @Override
     public HandledException handle(Throwable exception) {
-        return new HandledException(A0301, HttpStatus.UNAUTHORIZED,"unauthorized.error");
+        return new HandledException(A0312, HttpStatus.FORBIDDEN,"forbidden.error");
     }
 }

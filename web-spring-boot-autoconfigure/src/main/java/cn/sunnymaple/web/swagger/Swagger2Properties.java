@@ -17,7 +17,7 @@ public class Swagger2Properties {
      * 扫描的包
      * 默认为com.seagetec
      */
-    private String basePackage = "com.seagetech";
+    private String basePackage = "cn.sunnymaple";
     /**
      * 标题
      */

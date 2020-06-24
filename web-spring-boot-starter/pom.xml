@@ -15,7 +15,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.seagetech</groupId>
+            <groupId>cn.sunnymaple</groupId>
             <artifactId>web-spring-boot-autoconfigure</artifactId>
             <version>${web-spring-boot.version}</version>
         </dependency>

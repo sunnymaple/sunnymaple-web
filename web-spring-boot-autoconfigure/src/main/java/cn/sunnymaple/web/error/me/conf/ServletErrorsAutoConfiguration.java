@@ -2,16 +2,20 @@ package cn.sunnymaple.web.error.me.conf;
 
 import cn.sunnymaple.web.error.me.WebErrorHandlers;
 import cn.sunnymaple.web.error.me.adapter.HttpErrorAttributesAdapter;
+import cn.sunnymaple.web.error.me.adapter.attributes.DefaultRefineUnknownExceptionContainer;
+import cn.sunnymaple.web.error.me.adapter.attributes.IRefineUnknownExceptionContainer;
 import cn.sunnymaple.web.error.me.adapter.attributes.ServletErrorAttributes;
 import cn.sunnymaple.web.error.me.mvc.ErrorsControllerAdvice;
 import cn.sunnymaple.web.error.me.HttpError;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.context.annotation.Bean;
+
 
 import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type.SERVLET;
 
@@ -55,7 +59,9 @@ public class ServletErrorsAutoConfiguration {
     @Bean
     @ConditionalOnBean(WebErrorHandlers.class)
     public ErrorAttributes errorAttributes(WebErrorHandlers webErrorHandlers,
-                                           HttpErrorAttributesAdapter httpErrorAttributesAdapter) {
-        return new ServletErrorAttributes(webErrorHandlers, httpErrorAttributesAdapter);
+                                           HttpErrorAttributesAdapter httpErrorAttributesAdapter,
+                                           IRefineUnknownExceptionContainer refineUnknownExceptionContainer) {
+        return new ServletErrorAttributes(webErrorHandlers, httpErrorAttributesAdapter, refineUnknownExceptionContainer);
     }
+
 }

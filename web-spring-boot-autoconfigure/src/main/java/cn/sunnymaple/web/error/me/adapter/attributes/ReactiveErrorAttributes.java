@@ -31,6 +31,8 @@ public class ReactiveErrorAttributes extends DefaultErrorAttributes {
      */
     private final HttpErrorAttributesAdapter httpErrorAttributesAdapter;
 
+    private final IRefineUnknownExceptionContainer refineUnknownExceptionContainer;
+
     /**
      * Initializes the error attributes with required dependencies.
      *
@@ -39,10 +41,12 @@ public class ReactiveErrorAttributes extends DefaultErrorAttributes {
      * @throws NullPointerException When one of the required parameters is null.
      */
     public ReactiveErrorAttributes(WebErrorHandlers webErrorHandlers,
-                                   HttpErrorAttributesAdapter httpErrorAttributesAdapter) {
+                                   HttpErrorAttributesAdapter httpErrorAttributesAdapter,
+                                   IRefineUnknownExceptionContainer refineUnknownExceptionContainer) {
         super(true);
         this.webErrorHandlers = requireNonNull(webErrorHandlers, "Web error handlers is required");
         this.httpErrorAttributesAdapter = requireNonNull(httpErrorAttributesAdapter, "Adapter is required");
+        this.refineUnknownExceptionContainer = refineUnknownExceptionContainer;
     }
 
     /**
@@ -57,7 +61,9 @@ public class ReactiveErrorAttributes extends DefaultErrorAttributes {
     public Map<String, Object> getErrorAttributes(ServerRequest request, boolean includeStackTrace) {
         Map<String, Object> attributes = super.getErrorAttributes(request, includeStackTrace);
         Throwable exception = getError(request);
-        if (exception == null) exception = Exceptions.refineUnknownException(attributes);
+        if (exception == null) {
+            exception = refineUnknownExceptionContainer.refineUnknownException(attributes);
+        }
 
         HttpError httpError = webErrorHandlers.handle(exception, request, LocaleContextHolder.getLocale());
         Map<String, Object> adapted = httpErrorAttributesAdapter.adapt(httpError);

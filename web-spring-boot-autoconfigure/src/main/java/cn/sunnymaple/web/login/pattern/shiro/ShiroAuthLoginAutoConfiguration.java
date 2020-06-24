@@ -1,6 +1,7 @@
 package cn.sunnymaple.web.login.pattern.shiro;
 
 import cn.hutool.core.util.StrUtil;
+import cn.sunnymaple.web.error.me.adapter.attributes.IRefineUnknownExceptionContainer;
 import cn.sunnymaple.web.login.config.LoginAutoConfiguration;
 import cn.sunnymaple.web.login.config.LoginProperties;
 import cn.sunnymaple.web.login.config.Patten;
@@ -11,6 +12,7 @@ import cn.sunnymaple.web.login.controller.WebPattern;
 import cn.sunnymaple.web.error.me.WebErrorHandlers;
 import cn.sunnymaple.web.login.pattern.ConditionalOnWebPattern;
 import cn.sunnymaple.web.login.pattern.IPrincipalHandler;
+import cn.sunnymaple.web.login.pattern.shiro.handler.ShiroRefineUnknownExceptionContainer;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -180,6 +182,15 @@ public class ShiroAuthLoginAutoConfiguration {
         AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
         aasa.setSecurityManager(securityManager);
         return aasa;
+    }
+
+    /**
+     * 特殊异常处理容器
+     * @return
+     */
+    @Bean
+    public IRefineUnknownExceptionContainer container(){
+        return new ShiroRefineUnknownExceptionContainer();
     }
 
 

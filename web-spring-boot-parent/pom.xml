@@ -28,7 +28,7 @@
 
         <swagger2.version>2.9.2</swagger2.version>
 
-        <web-spring-boot.version>2.0.3-SNAPSHOT</web-spring-boot.version>
+        <web-spring-boot.version>1.0.0</web-spring-boot.version>
 
         <jsr305.version>3.0.2</jsr305.version>
         <junitparams.version>1.1.1</junitparams.version>
@@ -91,12 +91,6 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${alibaba-fastjson.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.seagetech</groupId>
-                <artifactId>seagetech-commons</artifactId>
-                <version>${seagetech-commons.version}</version>
             </dependency>
 
             <!--##################################Start SpringBoot################################## -->

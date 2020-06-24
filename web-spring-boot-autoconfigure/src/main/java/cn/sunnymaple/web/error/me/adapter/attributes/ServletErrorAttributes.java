@@ -39,6 +39,8 @@ public class ServletErrorAttributes extends DefaultErrorAttributes {
      */
     private final HttpErrorAttributesAdapter httpErrorAttributesAdapter;
 
+    private final IRefineUnknownExceptionContainer refineUnknownExceptionContainer;
+
     /**
      * Initializes the error attributes with required dependencies.
      *
@@ -47,12 +49,14 @@ public class ServletErrorAttributes extends DefaultErrorAttributes {
      * @throws NullPointerException When one of the required parameters is null.
      */
     public ServletErrorAttributes(WebErrorHandlers webErrorHandlers,
-                                  HttpErrorAttributesAdapter httpErrorAttributesAdapter) {
+                                  HttpErrorAttributesAdapter httpErrorAttributesAdapter,
+                                  IRefineUnknownExceptionContainer refineUnknownExceptionContainer) {
         requireNonNull(webErrorHandlers, "Web error handlers is required");
         requireNonNull(httpErrorAttributesAdapter, "Adapter is required");
 
         this.webErrorHandlers = webErrorHandlers;
         this.httpErrorAttributesAdapter = httpErrorAttributesAdapter;
+        this.refineUnknownExceptionContainer = refineUnknownExceptionContainer;
     }
 
     /**
@@ -69,7 +73,9 @@ public class ServletErrorAttributes extends DefaultErrorAttributes {
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
         Map<String, Object> attributes = super.getErrorAttributes(webRequest, includeStackTrace);
         Throwable exception = getError(webRequest);
-        if (exception == null) exception = Exceptions.refineUnknownException(attributes);
+        if (exception == null) {
+            exception = refineUnknownExceptionContainer.refineUnknownException(attributes);
+        }
 
         HttpError httpError = webErrorHandlers.handle(exception, webRequest, webRequest.getLocale());
         saveStatusCodeInRequest(webRequest, httpError);

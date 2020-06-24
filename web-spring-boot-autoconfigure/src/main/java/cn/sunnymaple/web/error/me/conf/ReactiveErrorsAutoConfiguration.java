@@ -2,6 +2,7 @@ package cn.sunnymaple.web.error.me.conf;
 
 import cn.sunnymaple.web.error.me.WebErrorHandlers;
 import cn.sunnymaple.web.error.me.adapter.HttpErrorAttributesAdapter;
+import cn.sunnymaple.web.error.me.adapter.attributes.IRefineUnknownExceptionContainer;
 import cn.sunnymaple.web.error.me.adapter.attributes.ReactiveErrorAttributes;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
@@ -34,7 +35,8 @@ public class ReactiveErrorsAutoConfiguration {
     @Bean
     @ConditionalOnBean(WebErrorHandlers.class)
     public ErrorAttributes errorAttributes(WebErrorHandlers webErrorHandlers,
-                                           HttpErrorAttributesAdapter httpErrorAttributesAdapter) {
-        return new ReactiveErrorAttributes(webErrorHandlers, httpErrorAttributesAdapter);
+                                           HttpErrorAttributesAdapter httpErrorAttributesAdapter,
+                                           IRefineUnknownExceptionContainer refineUnknownExceptionContainer) {
+        return new ReactiveErrorAttributes(webErrorHandlers, httpErrorAttributesAdapter,refineUnknownExceptionContainer);
     }
 }

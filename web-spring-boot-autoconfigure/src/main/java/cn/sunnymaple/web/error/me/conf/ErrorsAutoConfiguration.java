@@ -2,13 +2,13 @@ package cn.sunnymaple.web.error.me.conf;
 
 import cn.hutool.core.util.ArrayUtil;
 import cn.sunnymaple.web.error.me.*;
+import cn.sunnymaple.web.error.me.adapter.attributes.DefaultRefineUnknownExceptionContainer;
+import cn.sunnymaple.web.error.me.adapter.attributes.IRefineUnknownExceptionContainer;
 import cn.sunnymaple.web.error.me.fingerprint.UuidFingerprintProvider;
 import cn.sunnymaple.web.error.me.handlers.*;
 import cn.sunnymaple.web.error.LoggingErrorWebErrorHandlerPostProcessor;
-import com.seagetech.web.error.me.*;
 import cn.sunnymaple.web.error.me.adapter.DefaultHttpErrorAttributesAdapter;
 import cn.sunnymaple.web.error.me.adapter.HttpErrorAttributesAdapter;
-import com.seagetech.web.error.me.handlers.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -170,18 +170,17 @@ public class ErrorsAutoConfiguration {
         return new DefaultHttpErrorAttributesAdapter(errorsProperties);
     }
 
+
     /**
-     * Registers a {@link WebErrorHandler} bean to handle Spring Security specific exceptions when
-     * Spring Security's jar file is present on the classpath.
-     *
-     * @return A web error handler for Spring Security exceptions.
+     * 特殊异常处理容器
+     * @return
      */
-//    @Bean
-//    @ConditionalOnBean(WebErrorHandlers.class)
-//    @ConditionalOnClass(name = "org.springframework.security.access.AccessDeniedException")
-//    public SpringSecurityWebErrorHandler springSecurityWebErrorHandler() {
-//        return new SpringSecurityWebErrorHandler();
-//    }
+    @Bean
+    @ConditionalOnMissingBean(IRefineUnknownExceptionContainer.class)
+    @ConditionalOnBean(WebErrorHandlers.class)
+    public IRefineUnknownExceptionContainer container(){
+        return new DefaultRefineUnknownExceptionContainer();
+    }
 
     /**
      * Registers a {@link WebErrorHandler} to handle new Servlet exceptions defined in Spring Framework 5.1.
