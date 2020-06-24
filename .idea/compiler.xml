@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="web-swagger2-spring-boot-starter" />
+        <module name="web-mybatis-spring-boot-starter" />
+        <module name="web-login-spring-boot-starter" />
+        <module name="web-spring-boot-autoconfigure" />
+        <module name="web-spring-boot-starter" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="web-login-spring-boot-starter" target="1.8" />
+      <module name="web-mybatis-spring-boot-starter" target="1.8" />
+      <module name="web-spring-boot-autoconfigure" target="1.8" />
+      <module name="web-spring-boot-parent" target="1.8" />
+      <module name="web-spring-boot-starter" target="1.8" />
+      <module name="web-swagger2-spring-boot-starter" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

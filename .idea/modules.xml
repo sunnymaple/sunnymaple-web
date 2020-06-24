@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/web-login-spring-boot-starter/web-login-spring-boot-starter.iml" filepath="$PROJECT_DIR$/web-login-spring-boot-starter/web-login-spring-boot-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-mybatis-spring-boot-starter/web-mybatis-spring-boot-starter.iml" filepath="$PROJECT_DIR$/web-mybatis-spring-boot-starter/web-mybatis-spring-boot-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-spring-boot-autoconfigure/web-spring-boot-autoconfigure.iml" filepath="$PROJECT_DIR$/web-spring-boot-autoconfigure/web-spring-boot-autoconfigure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-spring-boot-parent/web-spring-boot-parent.iml" filepath="$PROJECT_DIR$/web-spring-boot-parent/web-spring-boot-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-spring-boot-starter/web-spring-boot-starter.iml" filepath="$PROJECT_DIR$/web-spring-boot-starter/web-spring-boot-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-swagger2-spring-boot-starter/web-swagger2-spring-boot-starter.iml" filepath="$PROJECT_DIR$/web-swagger2-spring-boot-starter/web-swagger2-spring-boot-starter.iml" />
+    </modules>
+  </component>
+</project>
