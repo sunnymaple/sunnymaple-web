@@ -13,7 +13,7 @@
     <properties>
         <java.version>1.8</java.version>
         <seagetech-commons.version>1.1.0</seagetech-commons.version>
-        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
+        <spring-boot.version>2.5.12</spring-boot.version>
         <hutool-all.version>5.2.3</hutool-all.version>
         <aspectjweaver.version>1.8.13</aspectjweaver.version>
         <lombok.version>1.18.10</lombok.version>
